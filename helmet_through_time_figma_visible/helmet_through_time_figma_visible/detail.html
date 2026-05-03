@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Helmet Through Time</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="phone">
+    <div class="topbar">Helmet Through Time</div>
+
+    <section class="content">
+      <div class="title-card" id="title">Objekt</div>
+
+      <div class="viewer-wrap">
+        <a class="nav-arrow left" id="prev">&lt;</a>
+
+        <img
+          id="preview"
+          class="object-preview"
+          src=""
+          alt="Ausgewähltes Feuerwehr-Objekt"
+        >
+
+        <a class="nav-arrow right" id="next">&gt;</a>
+      </div>
+
+      <div class="actions">
+        <a class="btn" id="arIOS" rel="ar">In AR ansehen</a>
+
+        <button
+          class="btn secondary"
+          onclick="panel.classList.add('open')"
+        >
+          Beschreibung
+        </button>
+
+        <a class="btn secondary" href="collection.html">Zur Übersicht</a>
+      </div>
+    </section>
+
+    <aside class="desc-panel" id="panel">
+      <a
+        class="close"
+        href="#"
+        onclick="panel.classList.remove('open'); return false;"
+      >
+        ×
+      </a>
+
+      <strong id="ptitle"></strong>
+      <p id="desc"></p>
+    </aside>
+
+    <div class="homebar"></div>
+  </main>
+
+  <script src="app-data.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+
+    let idx = Math.max(
+      0,
+      ITEMS.findIndex((item) => item.slug === params.get("id"))
+    );
+
+    if (idx < 0) {
+      idx = 0;
+    }
+
+    function render() {
+      const item = ITEMS[idx];
+
+      title.textContent = item.title;
+      ptitle.textContent = item.title;
+      desc.textContent = item.description;
+
+      preview.src = item.image;
+      preview.alt = item.title;
+
+      arIOS.href = item.usdz;
+
+      prev.href =
+        "detail.html?id=" +
+        ITEMS[(idx - 1 + ITEMS.length) % ITEMS.length].slug;
+
+      next.href =
+        "detail.html?id=" +
+        ITEMS[(idx + 1) % ITEMS.length].slug;
+    }
+
+    render();
+  </script>
+</body>
+</html>
