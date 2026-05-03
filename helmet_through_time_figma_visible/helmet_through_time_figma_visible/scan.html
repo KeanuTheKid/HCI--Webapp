@@ -1,1 +1,77 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Helmet Through Time</title><link rel="stylesheet" href="style.css"><script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script></head><body><main class="phone"><div class="topbar">Helmet Through Time</div><video id="cam" autoplay playsinline muted></video><section class="content"><div class="hint" style="margin-top:82px;font-weight:700;color:#eee">Halte die Kamera auf den QR-Code</div><div class="scan-box"><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div><div class="hint loading">QR-Code scannen...</div><div class="spacer"></div><a class="btn secondary" href="start.html">Scan simulieren / weiter</a></section><div class="homebar"></div></main><script>navigator.mediaDevices?.getUserMedia({video:{facingMode:'environment'}}).then(s=>{cam.srcObject=s}).catch(()=>{});setTimeout(()=>location.href='start.html',2800)</script></body></html>
+<!doctype html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Helmet Through Time</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="module"
+          src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+</head>
+
+<body>
+  <main class="phone">
+
+    <div class="topbar">
+      Helmet Through Time
+    </div>
+
+    <video id="cam"
+           autoplay
+           playsinline
+           muted>
+    </video>
+
+    <section class="content">
+
+      <div class="hint"
+           style="margin-top:82px;font-weight:700;color:#eee">
+        Halte die Kamera auf den QR-Code
+      </div>
+
+      <div class="scan-box">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+      </div>
+
+      <div class="hint loading">
+        QR-Code scannen...
+      </div>
+
+      <div class="spacer"></div>
+
+      <a class="btn secondary" href="start.html">
+        Scan simulieren / weiter
+      </a>
+
+    </section>
+
+    <div class="homebar"></div>
+
+  </main>
+
+  <script>
+    navigator.mediaDevices?.getUserMedia({
+      video: { facingMode: 'environment' }
+    })
+    .then(stream => {
+      cam.srcObject = stream;
+    })
+    .catch(() => {});
+
+    setTimeout(() => {
+      location.href = 'start.html';
+    }, 2800);
+  </script>
+
+</body>
+</html>
