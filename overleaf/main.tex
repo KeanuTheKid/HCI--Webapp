@@ -13,9 +13,7 @@
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{xcolor}
-\usepackage{titlesec}
 \usepackage{listings}
-\usepackage{mdframed}
 
 % ---------- Page Setup ----------
 \geometry{
@@ -31,20 +29,22 @@
 % ---------- Header & Footer ----------
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{\small HCI -- Übungsblatt 03}
+\lhead{\small HCI -- Übungsblatt 04}
 \chead{\small Gruppe 3}
 \rhead{\small Frühling 2026}
 \renewcommand{\headrulewidth}{0.4pt}
 \rfoot{\small Seite \thepage\ von \pageref{LastPage}}
 \renewcommand{\footrulewidth}{0.4pt}
 
-% ---------- Code Style ----------
+% ---------- Code Listing Style ----------
 \lstset{
-  basicstyle=\ttfamily\small,
+  basicstyle=\ttfamily\footnotesize,
   backgroundcolor=\color{gray!10},
   frame=single,
   breaklines=true,
-  language=HTML
+  breakatwhitespace=false,
+  language=HTML,
+  showstringspaces=false
 }
 
 % ---------- Document ----------
@@ -53,7 +53,7 @@
 
 \begin{center}
 {\Large \textbf{Human Computer Interaction}} \\[6pt]
-{\large Übungsblatt 03} \\[4pt]
+{\large Übungsblatt 04} \\[4pt]
 Frühling 2026 \\[10pt]
 Keanu Belo da Silva \quad Bruno Marinho \quad Bekim Vinca
 \end{center}
@@ -61,397 +61,167 @@ Keanu Belo da Silva \quad Bruno Marinho \quad Bekim Vinca
 \vspace{1cm}
 
 % ============================================================
-\section*{Aufgabe 1.1 -- Weitere Iteration des Figma-Prototypen}
-% ============================================================
-
-\subsection*{Übersicht der Änderungen}
-
-In dieser Iteration wurde der bestehende Figma-Prototyp visuell und hinsichtlich Barrierefreiheit grundlegend überarbeitet. Die wichtigsten Verbesserungen betreffen Typografie, Touch-Targets, Farbgestaltung und Kontrastverhältnisse gemäss WCAG-Standards.
-
-\subsection*{Vorher / Nachher Vergleich}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{screenshots/Figma_vorher.png}
-  \caption{Figma-Prototyp \textbf{vorher}: Original-Design mit grauem Hintergrund, weissen Elementen und schlechtem Kontrast.}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{screenshots/Figma_nachher.png}
-  \caption{Figma-Prototyp \textbf{nachher}: Überarbeitetes Design mit iPhone-Mockup, dunklem Theme und konsistenter Farbpalette.}
-\end{figure}
-
-\subsection*{Design-Entscheidungen}
-
-\textbf{1. iPhone-Rahmen} \\
-Der Prototyp wurde in einen iPhone 16 Rahmen eingebettet. Dies vermittelt einen realistischeren Eindruck der App und erleichtert die Beurteilung von Proportionen und Touch-Targets im Kontext eines echten Geräts.
-
-\textbf{2. Typografie} \\
-Die Schriftart wurde auf eine moderne, gut lesbare Schrift umgestellt. Schriftgrössen und -gewichte wurden für die verschiedenen Elemente klar hierarchisch gegliedert. Die Zeilenhöhe wurde für bessere Lesbarkeit angepasst.
-
-\textbf{3. Farbschema (Dark Theme)} \\
-Ein konsistentes dunkles Farbschema wurde eingeführt, das aus abgestuften Dunkelgrautönen für Hintergrund und Oberflächen sowie einem durchgängigen orangefarbenen Akzent besteht. Dies schafft eine klare visuelle Hierarchie und eine kohärente Identität der App.
-
-\textbf{4. Kontrastverhältnisse (WCAG 4.5:1)} \\
-Um die Lesbarkeit für alle Nutzer sicherzustellen, wurden die Farbkombinationen gemäss WCAG AA überprüft. Das Kontrastverhältnis von hellem Text auf dunklem Hintergrund liegt bei ca. 16:1 und übertrifft den geforderten Mindestwert von 4.5:1 damit deutlich.
-
-\textbf{5. Touch-Targets} \\
-Alle interaktiven Elemente -- Buttons und Navigationspfeile -- wurden auf eine ausreichende Mindestgrösse gebracht, um eine fehlerfreie Bedienung auf dem Touchscreen zu gewährleisten.
-
-\vspace{10mm}
-
-\begin{center}
-\url{https://www.figma.com/design/MiK6bmjVYM21s6dlmH78N8/Untitled?node-id=0-1&p=f&t=mF9hybEHppkD5iBy-0}
-\end{center}
-
-
-% ============================================================
-\newpage
-\section*{Aufgabe 1.2 -- 3D-Objekt-Clean-up mit Blender}
-% ============================================================
-
-\subsection*{Bereitgestelltes Objekt: Feuerlöscher}
-
-\subsubsection*{Vorher / Nachher}
-
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{screenshots/Feuerloescher_vorher.png}
-    \caption{Feuerlöscher \textbf{vorher}: Überschüssige pinke Basis und Unregelmässigkeiten am Boden sichtbar.}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{screenshots/Feuerloescher_nachher.png}
-    \caption{Feuerlöscher \textbf{nachher}: Überschüssige Teile entfernt, Oberfläche geglättet.}
-  \end{subfigure}
-\end{figure}
-
-\subsubsection*{Verwendete Techniken und Werkzeuge}
-
-\begin{itemize}
-  \item \textbf{Edit Mode:} Überschüssige Geometrie der Basis-Pfütze wurde im Edit Mode durch gezielte Auswahl und Löschen entfernt.
-  \item \textbf{Box Select:} Da das Mesh sehr komplex war, wurde Box Select eingesetzt um bestimmte Bereiche präzise einzugrenzen.
-  \item \textbf{Sculpt Mode -- Smooth Brush:} Verbliebene Unregelmässigkeiten am unteren Rand und am Feuerlöscher selber wurden mit dem Smooth Brush geglättet.
-\end{itemize}
-
-\subsubsection*{Herausforderungen}
-
-Eine zentrale Herausforderung war die ungleichmässige Erfassung des Bodenbereichs beim 3D-Scan. Da der Scan an dieser Stelle nicht gleichmässig war, bildete sich eine spitze, unregelmässige Struktur an der Basis. Der Boden wurde anschliessend manuell geschlossen, wobei die neu entstandene Fläche eine etwas abweichende Farbe aufwies. Insgesamt wirkte das Objekt dadurch jedoch sauberer und abgeschlossener als zuvor.
-
-\subsection*{Eigenes Objekt: Roter Feuerwehrhelm}
-
-\subsubsection*{Vorher / Nachher}
-
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{screenshots/roter_helm_vorher.png}
-    \caption{Roter Helm \textbf{vorher}: Auf Hocker gescannt, mit überschüssigen Teilen des Hockers und Beulen auf der Helmoberfläche.}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{screenshots/Roter_helm_blender.png}
-    \caption{Roter Helm \textbf{nachher}: Hocker entfernt, Oberfläche geglättet, Dellen ausgebessert.}
-  \end{subfigure}
-\end{figure}
-
-\subsubsection*{Verwendete Techniken und Werkzeuge}
-
-\begin{itemize}
-  \item \textbf{Edit Mode:} Der Hocker, auf dem der Helm beim Scannen stand, wurde im Edit Mode durch gezielte Auswahl entfernt.
-  \item \textbf{Sculpt Mode -- Smooth Brush:} Beulen und Unregelmässigkeiten auf der Helmoberfläche wurden mit dem Smooth Brush schrittweise geglättet.
-  \item \textbf{Sculpt Mode -- Inflate Brush:} Eine Delle auf der Helmoberfläche wurde mit dem Inflate Brush nach aussen korrigiert und anschliessend geglättet.
-\end{itemize}
-
-\subsubsection*{Herausforderungen}
-
-Die grösste Herausforderung beim eigenen Scan war das Entfernen der Beulen auf der Helmoberfläche. Da es sich um eine organische Form handelt, war es schwierig, die Unebenheiten zu glätten ohne dabei die ursprüngliche Helmform zu verändern. Besonders das Hinzufügen neuer Geometrie zum Ausgleich fehlender Bereiche erwies sich als komplex, da dies schnell zu unnatürlichen Übergängen führte. Das Entfernen des Hockers verlief hingegen vergleichsweise unkompliziert.
-
-
-% ============================================================
-\newpage
-\section*{Aufgabe 1.3 -- Erstellung eines neuen 3D-Objekts mit Blender}
-% ============================================================
-
-\subsection*{Objekt: Feuerwehrhelm}
-
-Für diese Aufgabe wurde ein stilisierter Feuerwehrhelm modelliert, der thematisch zum Projekt passt. Das Objekt besteht aus drei geometrischen Grundformen, die kombiniert und bearbeitet wurden.
-
-\subsection*{Arbeitsschritte}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{screenshots/helm_formen.png}
-\end{figure}
-
-\textbf{Schritt 1 -- Grundformen:} Als Ausgangspunkt wurden drei geometrische Objekte hinzugefügt: eine UV Sphere für die Helmkuppel, ein Cylinder für den Helmrand und ein Cube für den Kamm. Die Sphere wurde auf der Z-Achse abgeflacht und anschliessend die untere Hälfte im Edit Mode entfernt, sodass eine Halbkuppel entstand. Der Cylinder wurde stark abgeflacht und so skaliert, dass er als Krempe über die Kuppel hinausragt. Sein Boden wurde ebenfalls entfernt. Der Cube wurde schmal skaliert und mittig oben auf der Kuppel positioniert.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{screenshots/hlem_farben.png}
-\end{figure}
-
-\textbf{Schritt 2 -- Materialien:} In diesem Schritt wurden allen drei Objekten farbige Materialien zugewiesen. Kuppel und Rand erhielten ein Rot und dunkelrot, der Kamm wurde Schwarz gefärbt. Der Helm nimmt damit bereits die charakteristische Farbgebung eines Feuerwehrhelms an.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{screenshots/hlem_fertig.png}
-\end{figure}
-
-\textbf{Schritt 3 -- Finalisierung:} Mit dem Loop Cut Werkzeug wurde ein horizontaler Schnitt in die Kuppel gesetzt. Den so entstandenen Flächen wurde ein weisses Material zugewiesen, was den typischen Reflektorstreifen eines Feuerwehrhelms darstellt. Abschliessend wurde auf allen Objekten Shade Smooth angewandt sowie beim Kamm zusätzlich ein Subdivision Surface Modifier verwendet, um die Oberflächen glatter und realistischer wirken zu lassen.
-
-\subsection*{Herausforderungen}
-
-Die grösste Herausforderung war der generelle Umgang mit Blender. Das Finden der richtigen Werkzeuge und Funktionen sowie das Verstehen der verschiedenen Modi erforderte viel Einarbeitung. Zudem war es schwierig, die gewünschten Formen zu erreichen -- so war das Ziel, den Helm innen hohl zu gestalten um ein realistischeres 3D-Modell zu erhalten. Dies erwies sich jedoch als schwieriger als erwartet, da sich beim Cylinder beispielsweise nicht einzelne Teilflächen, sondern immer nur ganze Flächen entfernen liessen.
-
-
-% ============================================================
-\newpage
-\section*{Aufgabe 1.4 -- Extra 3D-Objekt mit Blender: Axt}
-% ============================================================
-
-\subsection*{Objekt: Feuerwehr-Axt}
-
-Für diese Aufgabe wurde eine stilisierte Feuerwehraxt in Blender modelliert. Die Axt wird als Deko-Element im Prototypen eingesetzt.
-
-\subsection*{Arbeitsschritte}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{screenshots/axt1.png}
-  \caption{Ausgangsform: Zylinder als Basisobjekt.}
-\end{figure}
-
-\textbf{Schritt 1 -- Grundform:}
-Als Startform wurde ein Zylinder verwendet. Mit Transformationen an Kanten und Flächen wurde die ursprüngliche Form schrittweise verzogen, um eine geeignetere Ausgangsbasis für die Axt zu erhalten.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{screenshots/axt2.png}
-  \caption{Zwischenstand: Formaufbau aus mehreren bearbeiteten Flächen.}
-\end{figure}
-
-\textbf{Schritt 2 -- Formaufbau:}
-Durch das Bearbeiten einzelner Flächen entstand aus der Grundform nach und nach die grobe Silhouette der Axt. Dabei wurden Ecken gezielt verschoben, um Kopf und Stiel voneinander abzugrenzen.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{screenshots/axt3.png}
-  \caption{Die Axtform wird durch weitere Anpassungen der Geometrie deutlich sichtbar.}
-\end{figure}
-
-\textbf{Schritt 3 -- Proportionen anpassen:}
-Im nächsten Schritt wurden weitere Punkte und Kanten verschoben, bis die Form der Axt klar erkennbar war. So konnte insbesondere der Übergang zwischen Axtkopf und Stiel besser definiert werden.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{screenshots/axt4.png}
-  \caption{Abgerundete Kanten für eine weichere und natürlichere Form.}
-\end{figure}
-
-\textbf{Schritt 4 -- Kanten glätten:}
-Anschliessend wurden Kanten abgerundet, damit das Objekt weniger kantig wirkt. Dadurch erhielt die Axt eine deutlich organischere und realistischere Form.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{screenshots/axt5.png}
-  \caption{Der Stiel wurde oval skaliert und leicht verformt.}
-\end{figure}
-
-\textbf{Schritt 5 -- Stiel verfeinern:}
-Der Stiel wurde auf einer Achse skaliert, sodass er eine eher ovale statt kreisförmige Form erhielt.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{screenshots/axt6.png}
-  \caption{Erste Farbgebung mit Texture Paint.}
-\end{figure}
-
-\textbf{Schritt 6 -- Farbgestaltung:}
-Für die farbliche Ausarbeitung wurde Texture Paint verwendet. Damit konnten erste Materialien und Farben direkt auf das Objekt aufgetragen werden.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{screenshots/axt7.png}
-  \caption{Versuch, zusätzliche Details auf die Axtklinge zu malen.}
-\end{figure}
-
-\textbf{Schritt 7 -- Detailversuche:}
-Es wurde versucht, weitere Details einzuzeichnen, insbesondere an der Klinge. Dabei trat jedoch das Problem auf, dass nicht nur kleine Bereiche, sondern jeweils grössere Flächen gleichzeitig eingefärbt wurden.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{screenshots/axt8.png}
-  \caption{Manuelle Nachbearbeitung mit dem Pinsel.}
-\end{figure}
-
-\textbf{Schritt 8 -- Manuelle Nachbearbeitung:}
-Zum Schluss wurden einzelne Bereiche von Hand mit dem Pinsel nachbearbeitet, um Details zu ergänzen und das Objekt visuell zu verbessern.
-
-\subsection*{Herausforderungen}
-
-Die grösste Herausforderung war die saubere Detailarbeit beim Einfärben. Obwohl nur kleine Bereiche bearbeitet werden sollten, wurden beim Texture Paint oft deutlich grössere Flächen mit eingefärbt als beabsichtigt. Auch das präzise Formen der Axt aus einer einfachen Grundform erforderte mehrere Korrekturen, bis Proportionen und Übergänge stimmig wirkten.
-
-
-% ============================================================
-\newpage
-\section*{Aufgabe 1.5 -- Entwicklung eines interaktiven Web-AR-Prototyps}
+\section*{Aufgabe 1.1 -- Entwicklung eines interaktiven Web-AR-Prototyps}
 % ============================================================
 
 \subsection*{Projektziel und Plattformentscheidung}
 
-Ziel dieser Aufgabe war die Entwicklung eines interaktiven Web-AR-Prototyps auf Basis der bestehenden Figma-Prototypen. Die Webapp ermöglicht es Nutzern, historische und moderne Feuerwehr-Objekte in Augmented Reality direkt im eigenen Raum zu betrachten.
+Ziel dieser Aufgabe war die Entwicklung eines interaktiven Web-AR-Prototyps auf Basis der bestehenden Figma-Prototypen. Die Webapp \textit{Helmet Through Time} ermöglicht es Nutzern, historische und moderne Feuerwehr-Objekte in Augmented Reality direkt im eigenen Raum zu betrachten.
 
-Der Prototyp wurde ausschliesslich für \textbf{iOS} entwickelt, da alle Gruppenmitglieder iPhones verwenden und keine Android-Geräte zur Verfügung standen. Als AR-Technologie wurde entsprechend \textbf{AR Quick Look} gewählt -- Apples nativer AR-Viewer, der direkt in Safari auf iOS integriert ist. Für Android wäre alternativ Google Scene Viewer über GLB-Dateien möglich gewesen.
+Der Prototyp wurde ausschliesslich für \textbf{iOS} entwickelt, da alle Gruppenmitglieder iPhones nutzen und keine Android-Geräte zur Verfügung standen. Als AR-Technologie wurde entsprechend \textbf{AR Quick Look} gewählt -- Apples nativer AR-Viewer, der direkt in Safari auf iOS integriert ist. Für Android wäre alternativ Google Scene Viewer über GLB-Dateien möglich gewesen.
 
 \begin{center}
 \begin{tabular}{ll}
 \toprule
 \textbf{Eigenschaft} & \textbf{Wert} \\
 \midrule
-Getestetes Gerät & iPhone 16 \\
-Betriebssystem & iOS 26.4.2 \\
-Browser & Safari \\
-AR-Technologie & AR Quick Look \\
-3D-Dateiformat & USDZ \\
-Hosting & GitHub Pages \\
+Getestetes Gerät    & iPhone 16 \\
+Betriebssystem      & iOS 26.4.2 \\
+Browser             & Safari \\
+AR-Technologie      & AR Quick Look \\
+3D-Dateiformat      & USDZ \\
+Hosting             & GitHub Pages \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\subsection*{Webapp-Struktur}
+\subsection*{Webapp-Struktur und Seiten}
 
-Die Webapp \textit{Helmet Through Time} besteht aus drei Seiten mit klarer Navigation:
+Die Webapp besteht aus drei Seiten mit klarer Navigation:
 
 \begin{itemize}
-  \item \textbf{Startseite} (\texttt{index.html}): Projektvorstellung mit Beschreibung und Einstiegs-Button
-  \item \textbf{Sammlung} (\texttt{collection.html}): Übersicht aller vier Objekte als Karten mit Thumbnail und Name
-  \item \textbf{Detailansicht} (\texttt{detail.html}): Vorschaubild, Beschreibung und ``In AR ansehen''-Button für jedes Objekt
+  \item \textbf{Startseite} (\texttt{index.html}): Projektvorstellung mit Kurzbeschreibung und Einstiegs-Button zur Sammlung.
+  \item \textbf{Sammlung} (\texttt{collection.html}): Übersicht aller vier Objekte als Karten mit Thumbnail und Name.
+  \item \textbf{Detailansicht} (\texttt{detail.html}): Vorschaubild, Beschreibung und ``In AR ansehen''-Button. Über Pfeile kann zwischen Objekten navigiert werden.
 \end{itemize}
 
-Die Webapp verwendet kein Framework -- nur HTML, CSS und JavaScript. Das Design ist mobile-first mit dunklem Farbschema und durchgängigem orangefarbenem Akzent, konsistent mit dem Figma-Prototypen.
+Die Webapp verwendet kein Framework -- nur HTML, CSS und JavaScript. Das Design ist mobile-first mit dunklem Farbschema und orangefarbenem Akzent, konsistent mit dem Figma-Prototypen.
 
 \subsection*{3D-Modelle}
 
 Der Prototyp enthält vier USDZ-Modelle:
 
 \begin{center}
-\begin{tabular}{llrr}
+\begin{tabular}{lrr}
 \toprule
-\textbf{Modell} & \textbf{Datei} & \textbf{GLB} & \textbf{USDZ} \\
+\textbf{Modell} & \textbf{GLB} & \textbf{USDZ} \\
 \midrule
-Feuerwehraxt & \texttt{fire\_axe.usdz} & 45 KB & 85 KB \\
-Historischer Lederhelm (ca.\,1900) & \texttt{historic\_helmet.usdz} & 32 KB & 56 KB \\
-Moderner Einsatzhelm & \texttt{red\_helmet.usdz} & 187 KB & 348 KB \\
-Feuerlöscher & \texttt{fire\_extinguisher.usdz} & 609 KB & 879 KB \\
+Feuerwehraxt (selbst modelliert) & 45\,KB & 85\,KB \\
+Historischer Lederhelm (ca.\,1900) & 32\,KB & 56\,KB \\
+Moderner Einsatzhelm & 187\,KB & 348\,KB \\
+Feuerlöscher & 609\,KB & 879\,KB \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\subsection*{Workflow: Feuerwehraxt}
+% ============================================================
+\subsection*{Workflow: Von Blender zum AR-Erlebnis}
+% ============================================================
 
-Der vollständige Workflow wird exemplarisch anhand der Feuerwehraxt dokumentiert, da dieses Modell selbst erstellt wurde (Aufgabe 1.4). Die übrigen Modelle lagen bereits als USDZ-Dateien vor.
+Der vollständige Workflow wird exemplarisch anhand der \textbf{Feuerwehraxt} dokumentiert, da dieses Modell selbst erstellt wurde. Die übrigen Modelle lagen bereits als USDZ-Dateien vor.
 
 \subsubsection*{Schritt 1 -- Modell in Blender öffnen}
 
-Das Modell \texttt{3d\_object\_fireaxe.blend} wurde in Blender 5.1.1 geöffnet. Es besteht aus zwei Mesh-Objekten: dem Axtkopf (\textit{Cube}, Material: Metall) und dem Stiel (\textit{Cylinder}, Material: Holz).
+Das Modell \texttt{3d\_object\_fireaxe.blend} wurde in Blender 5.1.1 geöffnet. Es besteht aus zwei Mesh-Objekten: dem Axtkopf (\textit{Cube}, Metall-Material) und dem Stiel (\textit{Cylinder}, Holz-Material).
 
 \begin{figure}[H]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{screenshots/blender_viewport_solid.png}
-    \caption{Blender Viewport im Solid Mode: Feuerwehraxt mit beiden Mesh-Objekten.}
+    \includegraphics[width=\textwidth]{screenshots/blender_solid.png}
+    \caption{Solid Mode: Feuerwehraxt mit Axtkopf und Stiel im Viewport.}
   \end{subfigure}
   \hfill
   \begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{screenshots/blender_material_preview.png}
-    \caption{Material Preview Mode: Metallkopf (grau) und Holzstiel (beige) sichtbar.}
+    \includegraphics[width=\textwidth]{screenshots/blender_material.png}
+    \caption{Material Preview: Metallkopf (grau) und Holzstiel (beige) sichtbar.}
   \end{subfigure}
+  \caption{Feuerwehraxt in Blender 5.1.1 -- Ausgangszustand vor dem Export.}
 \end{figure}
 
-Beim Öffnen zeigte Blender eine Warnung: \textit{``Active object has non-uniform scale''} (Scale Y: 1.240). Dies bedeutet, dass die Skalierung nicht auf die Geometrie angewendet wurde und beim Export zu falschen Proportionen führen kann.
+Beim Öffnen zeigte Blender die Warnung \textit{``Active object has non-uniform scale''} (Scale\,Y:\,1.240). Dies bedeutet, dass die Skalierung nicht auf die Geometrie angewendet wurde und beim Export zu falschen Proportionen führen kann.
 
 \subsubsection*{Schritt 2 -- Transforms anwenden}
 
-Vor dem Export wurde die Skalierung korrigiert: Alle Objekte selektieren (\texttt{A}), dann \texttt{Ctrl\,+\,A} $\rightarrow$ \textbf{All Transforms}.
+Vor dem Export wurde die Skalierung korrigiert: Alle Objekte selektieren mit \texttt{A}, dann \texttt{Ctrl\,+\,A} $\rightarrow$ \textbf{All Transforms}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\textwidth]{screenshots/blender_apply_transforms.png}
-  \caption{Apply-Menü in Blender: ``All Transforms'' wird ausgewählt, um nicht-uniforme Skalierung zu korrigieren.}
+  \includegraphics[width=0.55\textwidth]{screenshots/blender_apply.png}
+  \caption{Apply-Menü in Blender: ``All Transforms'' korrigiert die nicht-uniforme Skalierung vor dem Export.}
 \end{figure}
 
-\subsubsection*{Schritt 3 -- Export als USDZ}
+\subsubsection*{Schritt 3 -- Export als USDZ aus Blender}
 
 Der Export erfolgt über \textbf{File $\rightarrow$ Export $\rightarrow$ Universal Scene Description (.usd*)}.
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
+  \begin{subfigure}[t]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{screenshots/blender_export_menu.png}
-    \caption{Blender Export-Menü: ``Universal Scene Description'' ist für USDZ-Export zu wählen.}
+    \caption{Blender Export-Menü: ``Universal Scene Description'' auswählen.}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
+  \begin{subfigure}[t]{0.55\textwidth}
     \centering
     \includegraphics[width=\textwidth]{screenshots/blender_export_usdz.png}
-    \caption{Export-Dialog mit korrekter Dateiendung \texttt{.usdz}. Beim ersten Versuch wurde versehentlich \texttt{.usdc} gewählt.}
+    \caption{Export-Dialog: Dateiname mit Endung \texttt{.usdz} eingeben.}
   \end{subfigure}
+  \caption{USDZ-Export aus Blender 5.1.1.}
 \end{figure}
 
-\textbf{Problem:} Beim ersten Exportversuch wurde die Dateiendung \texttt{.usdc} statt \texttt{.usdz} verwendet. \texttt{.usdc} ist ein binäres USD-Format, das von iOS Safari nicht als AR-Datei erkannt wird und AR Quick Look nicht startet. \textbf{Lösung:} Der Dateiname im Export-Dialog wurde manuell auf \texttt{.usdz} geändert und erneut exportiert.
+\textbf{Problem beim Export:} Beim ersten Versuch wurde versehentlich die Endung \texttt{.usdc} statt \texttt{.usdz} verwendet. \texttt{.usdc} ist ein binäres USD-Format, das iOS Safari nicht als AR-Datei erkennt -- AR Quick Look startet damit nicht. \textbf{Lösung:} Der Dateiname im Export-Dialog wurde manuell auf \texttt{.usdz} korrigiert und erneut exportiert.
 
 \subsubsection*{Schritt 4 -- Einbindung in HTML mit AR Quick Look}
 
-Die exportierte USDZ-Datei wurde in \texttt{models/fire\_axe.usdz} abgelegt. Die Einbindung in \texttt{detail.html} verwendet das von Apple vorgeschriebene HTML-Muster:
+Die exportierte USDZ-Datei wurde in \texttt{models/fire\_axe.usdz} abgelegt. Die Einbindung verwendet das von Apple vorgeschriebene HTML-Muster:
 
-\begin{lstlisting}[language=HTML]
-<a class="btn ar-btn" id="arBtn" rel="ar" href="models/fire_axe.usdz">
-  <img id="arImg" src="assets/axe.svg" alt=""
+\begin{lstlisting}
+<!-- AR Quick Look (iOS Safari):
+     Apple verlangt ein <img> als direktes Kind von <a rel="ar">.
+     Ohne dieses img-Element oeffnet iOS Safari AR Quick Look nicht. -->
+<a class="btn" rel="ar" href="models/fire_axe.usdz">
+  <img src="assets/axe.svg" alt=""
        style="position:absolute;width:0;height:0;overflow:hidden">
   In AR ansehen
 </a>
 \end{lstlisting}
 
-Das \texttt{rel="ar"}-Attribut signalisiert iOS Safari, dass es sich um einen AR Quick Look Link handelt. Das \texttt{<img>}-Element ist laut Apple-Dokumentation zwingend als direktes Kind des \texttt{<a>}-Elements erforderlich -- ohne es öffnet sich AR Quick Look nicht. Es wird auf 0\,$\times$\,0\,px gesetzt, damit es unsichtbar bleibt und der Button normal aussieht.
+Das \texttt{rel="ar"}-Attribut signalisiert iOS Safari, dass es sich um einen AR Quick Look Link handelt. Das \texttt{<img>}-Element ist laut Apple-Dokumentation als direktes Kind des \texttt{<a>}-Elements zwingend erforderlich -- ohne es öffnet sich AR Quick Look nicht. Es wird auf 0\,$\times$\,0\,px gesetzt damit es unsichtbar bleibt.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{screenshots/vscode_ar_code.png}
-  \caption{VS Code mit AR Quick Look Implementierung: Kommentar erklärt warum das \texttt{<img>}-Kind-Element zwingend erforderlich ist.}
+  \includegraphics[width=\textwidth]{screenshots/vscode_code.png}
+  \caption{VS Code: AR Quick Look Implementierung in \texttt{detail.html}. Der Kommentar erklärt warum das \texttt{<img>}-Kind-Element zwingend nötig ist.}
 \end{figure}
 
 \subsubsection*{Schritt 5 -- Deployment auf GitHub Pages}
 
-Die Webapp wird über \textbf{GitHub Pages} öffentlich gehostet. Alle Dateien liegen im Root des \texttt{main}-Branches; kein Build-Prozess ist nötig.
+Die Webapp wird über \textbf{GitHub Pages} öffentlich gehostet. Alle Dateien liegen direkt im Root des \texttt{main}-Branches; kein Build-Prozess ist nötig.
 
-\textbf{URL:} \url{https://keanuthekid.github.io/HCI--Webapp/}
+\medskip
+\textbf{Öffentliche URL:} \url{https://keanuthekid.github.io/HCI--Webapp/}
+\medskip
 
 \begin{figure}[H]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{screenshots/github_pages_settings.png}
+    \includegraphics[width=\textwidth]{screenshots/github_pages.png}
     \caption{GitHub Pages Einstellungen: Branch \texttt{main}, Ordner \texttt{/(root)}.}
   \end{subfigure}
   \hfill
   \begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{screenshots/github_actions_deploy.png}
-    \caption{GitHub Actions: Workflow ``pages build and deployment'' erfolgreich abgeschlossen (54\,s).}
+    \includegraphics[width=\textwidth]{screenshots/github_actions.png}
+    \caption{GitHub Actions: Workflow ``pages build and deployment'' erfolgreich (54\,s).}
   \end{subfigure}
+  \caption{GitHub Pages Deployment.}
 \end{figure}
 
-\textbf{Problem:} Nach der ersten Konfiguration von GitHub Pages startete der Deployment-Workflow nicht automatisch. Die Seite blieb über 30 Minuten nicht erreichbar (HTTP 404). \textbf{Lösung:} Ein leerer Commit wurde gepusht (\texttt{git commit -{}-allow-empty}), um den GitHub Actions Workflow manuell zu triggern.
+\textbf{Problem:} Nach der ersten Konfiguration startete der Deployment-Workflow nicht automatisch. Die Seite blieb über 30 Minuten nicht erreichbar (HTTP\,404). \textbf{Lösung:} Ein leerer Commit wurde gepusht (\texttt{git commit -{}-allow-empty}), um die GitHub Actions Pipeline manuell zu triggern.
 
 \subsubsection*{Schritt 6 -- Test auf iPhone 16}
 
@@ -461,36 +231,35 @@ Die Webapp wurde auf einem \textbf{iPhone 16} mit \textbf{iOS 26.4.2} in Safari 
   \centering
   \begin{subfigure}[t]{0.30\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{screenshots/iphone_startseite.png}
-    \caption{Startseite in Safari auf dem iPhone\,16.}
+    \includegraphics[width=\textwidth]{screenshots/iphone_start.png}
+    \caption{Startseite in Safari.}
   \end{subfigure}
   \hfill
   \begin{subfigure}[t]{0.30\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{screenshots/iphone_sammlung.png}
-    \caption{Sammlung mit vier Objekten als Karten.}
+    \includegraphics[width=\textwidth]{screenshots/iphone_collection.png}
+    \caption{Sammlung mit vier Objekten.}
   \end{subfigure}
   \hfill
   \begin{subfigure}[t]{0.30\textwidth}
     \centering
     \includegraphics[width=\textwidth]{screenshots/iphone_detail.png}
-    \caption{Detailansicht der Feuerwehraxt mit ``In AR ansehen''-Button.}
+    \caption{Detailansicht mit AR-Button.}
   \end{subfigure}
+  \caption{Webapp auf dem iPhone\,16 in Safari -- alle drei Seiten.}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.45\textwidth]{screenshots/iphone_ar_quicklook.png}
-  \caption{AR Quick Look auf dem iPhone\,16: Die Feuerwehraxt wird auf dem Schreibtisch platziert. iOS erkennt die Tischoberfläche automatisch.}
+  \includegraphics[width=0.45\textwidth]{screenshots/iphone_ar.png}
+  \caption{AR Quick Look auf dem iPhone\,16: Die Feuerwehraxt wird auf dem Schreibtisch platziert. iOS erkennt die Tischoberfläche automatisch und positioniert das Modell darauf.}
 \end{figure}
-
-AR Quick Look öffnet sich korrekt und platziert das 3D-Modell auf der erkannten Tischoberfläche. Die Navigation zwischen allen drei Seiten funktioniert einwandfrei.
 
 \subsection*{Reflexion und Einschränkungen}
 
-\textbf{Materialverlust beim USDZ-Export:} Das Modell erscheint in AR einfarbig gelb, obwohl es in Blender mit zwei Materialien (Metall und Holz) modelliert wurde. Blender 5 überträgt komplexe Material-Setups beim USDZ-Export nicht vollständig. Für eine materialgetreue AR-Darstellung wäre Apple Reality Converter oder ein USD-nativer Workflow notwendig.
+\textbf{Materialverlust beim USDZ-Export:} Das Modell erscheint in AR einfarbig gelb, obwohl es in Blender mit zwei Materialien (Metall und Holz) modelliert wurde. Blender\,5 überträgt komplexe Material-Setups beim nativen USDZ-Export nicht vollständig. Für eine materialgetreue AR-Darstellung wäre Apple Reality Converter oder ein USD-nativer Materialworkflow notwendig.
 
-\textbf{Skalierung:} Das Modell erscheint in AR grösser als erwartet, da die Blender-Einheiten nicht kalibriert wurden. Eine korrekte Skalierung vor dem Export (reale Axt ca. 60--80\,cm) würde die User Experience verbessern.
+\textbf{Skalierung in AR:} Das Modell erscheint im Verhältnis zur realen Umgebung grösser als erwartet, da die Blender-Einheiten (Meter) vor dem Export nicht auf die reale Objektgrösse kalibriert wurden.
 
 \textbf{Plattformbeschränkung:} Der Prototyp funktioniert ausschliesslich in Safari auf iOS. Andere Browser unterstützen AR Quick Look nicht.
 

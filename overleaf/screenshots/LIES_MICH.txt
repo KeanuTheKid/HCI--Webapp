@@ -1,74 +1,25 @@
-SCREENSHOTS FÜR OVERLEAF
-========================
-
-Lege alle Screenshots als PNG-Dateien in diesen Ordner.
-Die Dateinamen müssen EXAKT so lauten wie unten angegeben.
+SCREENSHOTS – WELCHES BILD KOMMT WOHIN
+======================================
+Benenne deine Screenshots exakt so um und lege sie in diesen Ordner.
 
 
-============================================================
-AUFGABE 1.1 – Figma
-============================================================
-Figma_vorher.png        → Screenshot des alten Figma-Designs
-Figma_nachher.png       → Screenshot des neuen Figma-Designs
+blender_solid.png         → Screenshot A  (Blender, Solid Mode, Axt gut sichtbar)
+blender_material.png      → Screenshot B  (Blender, Material Preview, Farben sichtbar)
+blender_apply.png         → Screenshot C  (Apply-Menü mit "All Transforms" markiert)
+blender_export_menu.png   → Screenshot D  (File → Export Menü aufgeklappt)
+blender_export_usdz.png   → Screenshot E2 (Export-Dialog, Dateiname endet auf .usdz)
+vscode_code.png           → Screenshot F  (VS Code mit AR Quick Look HTML-Code)
+github_pages.png          → Screenshot G  (GitHub Pages: main / root Einstellungen)
+github_actions.png        → Screenshot I  (GitHub Actions: grüner Haken, 54s)
+iphone_start.png          → Screenshot J  (iPhone: Startseite in Safari)
+iphone_collection.png     → Screenshot K  (iPhone: Sammlung mit 4 Objekten)
+iphone_detail.png         → Screenshot L  (iPhone: Detailansicht Feuerwehraxt)
+iphone_ar.png             → Screenshot M  (iPhone: AR Quick Look, Axt auf Tisch)
 
 
-============================================================
-AUFGABE 1.2 – 3D Cleanup
-============================================================
-Feuerloescher_vorher.png    → Feuerlöscher vorher
-Feuerloescher_nachher.png   → Feuerlöscher nachher
-roter_helm_vorher.png       → Roter Helm vorher
-Roter_helm_blender.png      → Roter Helm nachher
-
-
-============================================================
-AUFGABE 1.3 – Neues 3D-Objekt: Helm
-============================================================
-helm_formen.png     → Blender: Grundformen (Sphere, Cylinder, Cube)
-hlem_farben.png     → Blender: Helm mit Materialien/Farben
-hlem_fertig.png     → Blender: Finaler Helm
-
-
-============================================================
-AUFGABE 1.4 – Feuerwehraxt
-============================================================
-axt1.png    → Zylinder Ausgangsform
-axt2.png    → Zwischenstand Formaufbau
-axt3.png    → Axtform erkennbar
-axt4.png    → Kanten abgerundet
-axt5.png    → Stiel oval skaliert
-axt6.png    → Texture Paint erste Farbe
-axt7.png    → Detailversuch Klinge
-axt8.png    → Manuelle Nachbearbeitung
-
-
-============================================================
-AUFGABE 1.5 – Web AR (NEU)
-============================================================
-blender_viewport_solid.png      → Screenshot A:  Blender Solid Mode mit Axt
-blender_material_preview.png    → Screenshot B:  Blender Material Preview (Farben sichtbar)
-blender_apply_transforms.png    → Screenshot C:  Apply-Menü mit "All Transforms" markiert
-blender_export_menu.png         → Screenshot D:  File → Export Menü aufgeklappt
-blender_export_usdz.png         → Screenshot E2: Export-Dialog mit .usdz Dateinamen
-vscode_ar_code.png              → Screenshot F:  VS Code mit AR Quick Look HTML-Code
-github_pages_settings.png       → Screenshot G:  GitHub Pages Einstellungen (main / root)
-github_actions_deploy.png       → Screenshot I:  GitHub Actions grüner Haken
-iphone_startseite.png           → Screenshot J:  Startseite auf iPhone 16
-iphone_sammlung.png             → Screenshot K:  Sammlung auf iPhone 16
-iphone_detail.png               → Screenshot L:  Detailansicht Feuerwehraxt auf iPhone
-iphone_ar_quicklook.png         → Screenshot M:  AR Quick Look – Axt auf Tisch
-
-
-============================================================
-IN OVERLEAF HOCHLADEN
-============================================================
-1. Gehe zu overleaf.com → dein Projekt
-2. Klicke links oben auf das Upload-Symbol
-3. Lade ZUERST main.tex hoch (aus dem overleaf/-Ordner)
-4. Erstelle einen Ordner "screenshots" in Overleaf
-5. Lade alle PNG-Dateien aus diesem Ordner in "screenshots/" hoch
-6. Klicke auf "Recompile"
-
-WICHTIG: Fehlende Screenshots erzeugen einen LaTeX-Fehler.
-Füge vorübergehend \graphicspath{{screenshots/}} am Anfang ein
-oder ersetze fehlende Bilder mit einem Platzhalter.
+IN OVERLEAF HOCHLADEN:
+1. Neues Projekt erstellen (oder bestehendes öffnen)
+2. main.tex hochladen
+3. Ordner "screenshots" anlegen
+4. Alle PNG-Dateien in "screenshots/" hochladen
+5. Recompile
