@@ -30,7 +30,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\small HCI -- Übungsblatt 04}
-\chead{\small Gruppe 3}
+\chead{\small Gruppe 7}
 \rhead{\small Frühling 2026}
 \renewcommand{\headrulewidth}{0.4pt}
 \rfoot{\small Seite \thepage\ von \pageref{LastPage}}
@@ -106,7 +106,7 @@ Der Prototyp enthält vier USDZ-Modelle:
 \toprule
 \textbf{Modell} & \textbf{GLB} & \textbf{USDZ} \\
 \midrule
-Feuerwehraxt (selbst modelliert) & 45\,KB & 85\,KB \\
+Feuerwehraxt  & 45\,KB & 85\,KB \\
 Historischer Lederhelm (ca.\,1900) & 32\,KB & 56\,KB \\
 Moderner Einsatzhelm & 187\,KB & 348\,KB \\
 Feuerlöscher & 609\,KB & 879\,KB \\
@@ -263,6 +263,7 @@ Die Webapp wurde auf einem \textbf{iPhone 16} mit \textbf{iOS 26.4.2} in Safari 
 
 \textbf{Plattformbeschränkung:} Der Prototyp funktioniert ausschliesslich in Safari auf iOS. Andere Browser unterstützen AR Quick Look nicht.
 
+
 % ============================================================
 \newpage
 \section*{Aufgabe 1.2 -- Planung des Produktvideos}
@@ -278,15 +279,15 @@ Das ursprüngliche Konzept \textit{Helmet Through Time} sah vor, dass Museumsbes
 \textbf{Ursprüngliches Konzept} & \textbf{Implementiert} \\
 \midrule
 QR-Code-Einstieg im Museum & Direkter URL-Aufruf \\
-Frontkamera-AR: Helm auf dem Kopf & Environment-AR: Objekte werden auf Flächen platziert \\
-Interaktiver Helmwechsel in der AR-Ansicht & Navigation über separate Detailseiten \\
-Informationseinblendung direkt in der AR-Ansicht & Beschreibungs-Panel als separates Overlay \\
-Nur Helme & Helme + Feuerlöscher + Axt \\
+Frontkamera-AR: Helm auf dem Kopf & Environment-AR: Objekte auf Flächen platziert \\
+Helmwechsel direkt in der AR-Ansicht & Navigation über separate Detailseiten \\
+Infos direkt in der AR-Ansicht & Beschreibungs-Panel als separates Overlay \\
+Ausschliesslich Helme & Helme + Feuerlöscher + Axt \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\textbf{Hauptgrund der Abweichung:} Frontkamera-AR mit Face-Tracking ist mit AR Quick Look und USDZ technisch nicht realisierbar. AR Quick Look platziert Objekte in der Umgebung (auf Flächen), erkennt aber keine Gesichter. Face-Tracking-AR würde ARKit in einer nativen iOS-App oder WebXR mit Face-Tracking-API erfordern -- beides ist im Rahmen einer reinen HTML/CSS/JS-Webapp mit GitHub Pages nicht umsetzbar.
+\textbf{Hauptgrund der Abweichung:} Frontkamera-AR mit Face-Tracking ist mit AR Quick Look und USDZ technisch nicht realisierbar. AR Quick Look platziert Objekte auf Flächen, erkennt aber keine Gesichter. Face-Tracking würde ARKit in einer nativen iOS-App oder WebXR mit Face-Tracking-API erfordern -- beides ist im Rahmen einer reinen HTML/CSS/JS-Webapp nicht umsetzbar.
 
 \subsection*{Videoplan}
 
@@ -294,54 +295,38 @@ Das Produktvideo soll in ca. 60--90 Sekunden zeigen, wie die Anwendung in einem 
 
 \subsubsection*{Szene 1 -- Einstieg im Museum (ca. 10\,s)}
 
-\textbf{Was gezeigt wird:} Eine Person steht vor einem Feuerwehrhelm im Museum. Neben dem Exponat ist ein QR-Code angebracht.
-
-\textbf{Umsetzung:} Ein QR-Code wird ausgedruckt und neben einem Objekt platziert. Die Kamera filmt die Person beim Scannen des QR-Codes mit dem iPhone. Dieser Schritt ist in der Webapp simulierbar: Die Startseite kann direkt geöffnet werden, während jemand die Kamera auf den QR-Code hält.
+Eine Person steht vor einem Feuerwehrhelm. Neben dem Exponat ist ein ausgedruckter QR-Code angebracht. Die Kamera filmt die Person beim Scannen des Codes mit dem iPhone. Die Startseite der Webapp öffnet sich.
 
 \subsubsection*{Szene 2 -- Navigation in der Webapp (ca. 20\,s)}
 
-\textbf{Was gezeigt wird:} Startseite, Sammlung mit vier Objekten, Auswahl der Feuerwehraxt, Öffnen der Beschreibung.
+Screenrecording vom iPhone: Startseite, Sammlung mit vier Objekten, Auswahl der Feuerwehraxt, Öffnen der Beschreibung. Alle drei Seiten sind voll implementiert und können direkt aufgezeichnet werden.
 
-\textbf{Umsetzung:} Screenrecording direkt vom iPhone 16. Alle drei Seiten der Webapp sind vorhanden und voll funktionsfähig.
+\subsubsection*{Szene 3 -- AR Quick Look: Objekt im Raum (ca. 20\,s)}
 
-\subsubsection*{Szene 3 -- AR Quick Look (ca. 20\,s)}
-
-\textbf{Was gezeigt wird:} Tippen auf ``In AR ansehen'', AR Quick Look öffnet sich, Helm/Axt wird auf dem Tisch platziert, Person dreht das Modell.
-
-\textbf{Umsetzung:} Screenrecording vom iPhone. Diese Funktion ist vollständig implementiert und kann direkt gefilmt werden.
+Screenrecording vom iPhone: Tippen auf ``In AR ansehen'', AR Quick Look öffnet sich, das Modell wird auf dem Tisch platziert, Person dreht und bewegt es. Diese Funktion ist vollständig implementiert.
 
 \subsubsection*{Szene 4 -- Nicht implementierte Funktion: Helm-Anprobe (ca. 20\,s)}
 
 \textbf{Was gezeigt wird:} Der historische Helm erscheint virtuell auf dem Kopf der Nutzenden (Frontkamera-AR).
 
-\textbf{Umsetzung im Video, obwohl nicht implementiert:}
-Die Frontkamera-AR kann im Video auf zwei Wegen simuliert werden:
-
-\begin{itemize}
-  \item \textbf{Option A -- Instagram/Snapchat-Filter:} Einen existierenden Helm-AR-Filter auf Instagram oder Snapchat verwenden und diesen als visuelle Referenz filmen. Im Video-Kommentar wird erklärt, dass dies die geplante Funktion darstellt.
-  \item \textbf{Option B -- Schnitt-Trick:} Person hält iPhone vor sich (Frontkamera sichtbar). Im Schnitt wird ein Screenshot oder eine Animation eingeblendet, die zeigt wie der Helm auf dem Kopf aussehen würde -- etwa ein Mockup aus dem Figma-Prototypen.
-\end{itemize}
-
-Option B ist klarer kommunizierbar und erfordert keine Drittanbieter-App. Der Helm-Mockup aus dem Figma-Prototypen kann direkt verwendet werden.
+\textbf{Umsetzung im Video:} Da Frontkamera-AR technisch nicht realisierbar war, wird diese Funktion per Schnitt simuliert. Eine Person hält das iPhone vor sich (Frontkamera sichtbar). Im Schnitt wird ein Mockup aus dem Figma-Prototypen eingeblendet, das zeigt wie der Helm auf dem Kopf aussehen würde. Ein kurzer Texteinblendung macht deutlich, dass es sich um die geplante, aber nicht implementierte Funktion handelt.
 
 \subsubsection*{Szene 5 -- Abschluss (ca. 10\,s)}
 
-\textbf{Was gezeigt wird:} Person legt iPhone weg, Helm steht weiterhin als AR-Objekt auf dem Tisch neben dem Museumsexponat. URL und QR-Code eingeblendet.
+Kameraschwenk vom iPhone-Screen zum realen Ausstellungsobjekt neben dem Exponat. Titelkarte mit URL der Webapp.
 
-\textbf{Umsetzung:} Kameraschwenk vom iPhone-Screen zum realen Ausstellungsobjekt, dann Titelkarte mit URL.
-
-\subsection*{Zusammenfassung Videostruktur}
+\subsection*{Übersicht}
 
 \begin{center}
 \begin{tabular}{clll}
 \toprule
 \textbf{Szene} & \textbf{Inhalt} & \textbf{Dauer} & \textbf{Umsetzung} \\
 \midrule
-1 & QR-Code-Einstieg im Museum & 10\,s & Real gedreht \\
-2 & Navigation in der Webapp & 20\,s & Screenrecording \\
-3 & AR Quick Look (Objekt auf Tisch) & 20\,s & Screenrecording \\
-4 & Helm-Anprobe (Frontkamera-AR) & 20\,s & Figma-Mockup im Schnitt \\
-5 & Abschluss mit URL & 10\,s & Kameraschwenk + Titelkarte \\
+1 & QR-Code-Einstieg im Museum   & 10\,s & Real gedreht \\
+2 & Navigation in der Webapp     & 20\,s & Screenrecording \\
+3 & AR Quick Look (Objekt)       & 20\,s & Screenrecording \\
+4 & Helm-Anprobe (Frontkamera)   & 20\,s & Figma-Mockup im Schnitt \\
+5 & Abschluss mit URL            & 10\,s & Kameraschwenk + Titelkarte \\
 \bottomrule
 \end{tabular}
 \end{center}
