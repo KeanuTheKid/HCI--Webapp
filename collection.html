@@ -3,27 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Helmet Through Time</title>
+  <title>Sammlung – Helmet Through Time</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <main class="phone">
-    <div class="topbar">Helmet Through Time</div>
+
+    <div class="topbar">
+      <a class="back-btn" href="index.html">‹</a>
+      Helmet Through Time
+    </div>
 
     <section class="content">
+
       <div class="title-card">Feuerwehr-Objekte</div>
 
       <p class="hint">
-        Wähle ein Objekt aus und öffne es anschließend in AR.
+        Wähle ein Objekt aus und öffne es in AR auf deinem iPhone.
       </p>
 
       <div class="list" id="list"></div>
 
-      <div class="note">
-        iPhone: in Safari öffnen und auf „In AR ansehen“ tippen.
-        Android: Chrome öffnet Scene Viewer, wenn GLB-Dateien online erreichbar sind.
-      </div>
     </section>
 
     <div class="homebar"></div>
@@ -33,13 +33,12 @@
   <script>
     list.innerHTML = ITEMS.map((item) => `
       <a class="card" href="detail.html?id=${item.slug}">
-        <span class="thumb">
+        <span class="thumb" style="background:${item.color}22">
           <img src="${item.image}" alt="${item.title}">
         </span>
-
-        <span>
+        <span class="card-text">
           <h3>${item.title}</h3>
-          <p>Beschreibung und AR-Ansicht</p>
+          <p>In AR ansehen →</p>
         </span>
       </a>
     `).join("");

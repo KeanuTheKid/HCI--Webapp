@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Objekt – Helmet Through Time</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="phone">
+
+    <div class="topbar">
+      <a class="back-btn" href="collection.html">‹</a>
+      Helmet Through Time
+    </div>
+
+    <section class="content">
+
+      <div class="title-card" id="title">Objekt</div>
+
+      <div class="viewer-wrap">
+        <a class="nav-arrow left" id="prev">&#8249;</a>
+
+        <img
+          id="preview"
+          class="object-preview"
+          src=""
+          alt="Vorschau"
+        >
+
+        <a class="nav-arrow right" id="next">&#8250;</a>
+      </div>
+
+      <div class="actions">
+
+        <!--
+          AR Quick Look (iOS Safari):
+          Apple verlangt ein <img>-Element als direktes Kind des <a rel="ar">.
+          Das img ist auf 0×0 px gesetzt damit der Button normal aussieht.
+          Ohne dieses img-Kind öffnet iOS Safari AR Quick Look nicht.
+        -->
+        <a class="btn ar-btn" id="arBtn" rel="ar" href="#">
+          <img id="arImg" src="" alt=""
+               style="position:absolute;width:0;height:0;overflow:hidden">
+          In AR ansehen
+        </a>
+
+        <button
+          class="btn secondary"
+          onclick="panel.classList.add('open')"
+        >
+          Beschreibung
+        </button>
+
+        <a class="btn secondary" href="collection.html">Zur Übersicht</a>
+
+      </div>
+
+    </section>
+
+    <aside class="desc-panel" id="panel">
+      <a class="close" href="#" onclick="panel.classList.remove('open');return false;">×</a>
+      <strong id="ptitle"></strong>
+      <p id="desc"></p>
+    </aside>
+
+    <div class="homebar"></div>
+  </main>
+
+  <script src="app-data.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    let idx = Math.max(0, ITEMS.findIndex(i => i.slug === params.get("id")));
+
+    function render() {
+      const item = ITEMS[idx];
+
+      document.title = item.title + " – Helmet Through Time";
+      title.textContent = item.title;
+      ptitle.textContent = item.title;
+      desc.textContent = item.description;
+
+      preview.src = item.image;
+      preview.alt = item.title;
+
+      // AR Quick Look: href auf dem <a rel="ar"> muss die USDZ-Datei sein
+      arBtn.href = item.usdz;
+      arImg.src = item.image;
+
+      prev.href = "detail.html?id=" + ITEMS[(idx - 1 + ITEMS.length) % ITEMS.length].slug;
+      next.href = "detail.html?id=" + ITEMS[(idx + 1) % ITEMS.length].slug;
+    }
+
+    render();
+  </script>
+</body>
+</html>
