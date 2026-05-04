@@ -172,11 +172,34 @@ Export-Pfad in Blender: **File → Export → Universal Scene Description (.usd\
 
 ### Schritt 4: Einbindung in HTML mit AR Quick Look
 
-[→ wird nach Website-Bau ergänzt]
+Die exportierte USDZ-Datei wurde in `models/fire_axe.usdz` abgelegt. Die Einbindung in `detail.html` erfolgt über das von Apple vorgeschriebene HTML-Muster:
+
+```html
+<a class="btn ar-btn" id="arBtn" rel="ar" href="models/fire_axe.usdz">
+  <img id="arImg" src="assets/axe.svg" alt=""
+       style="position:absolute;width:0;height:0;overflow:hidden">
+  In AR ansehen
+</a>
+```
+
+Das `rel="ar"`-Attribut signalisiert iOS Safari, dass es sich um einen AR Quick Look Link handelt. Das `<img>`-Element ist laut Apple-Dokumentation zwingend erforderlich als direktes Kind des `<a>`-Elements — ohne es öffnet sich AR Quick Look nicht.
+
+*→ Screenshot F: VS Code mit AR Quick Look HTML-Code*
+
+Die `href`- und `src`-Werte werden dynamisch per JavaScript gesetzt, sodass dieselbe `detail.html`-Seite für alle vier Objekte funktioniert.
 
 ### Schritt 5: Test auf iPhone 16
 
-[→ wird nach Deployment ergänzt]
+Die Webapp wurde auf einem **iPhone 16 mit iOS 26.4.2** in **Safari** getestet.
+
+*→ Screenshot J: Startseite der Webapp in Safari auf dem iPhone 16*
+*→ Screenshot K: Sammlung mit allen vier Objekten als Karten*
+*→ Screenshot L: Detailansicht der Feuerwehraxt mit „In AR ansehen"-Button*
+*→ Screenshot M: AR Quick Look geöffnet — die Feuerwehraxt wird auf dem Schreibtisch platziert*
+
+**Ergebnis:** AR Quick Look öffnet sich korrekt und platziert das 3D-Modell auf der erkannten Tischoberfläche. Die Navigation zwischen den Seiten funktioniert einwandfrei.
+
+**Beobachtung:** Das Modell erscheint in AR einfarbig gelb, obwohl es in Blender mit zwei Materialien (Metall und Holz) modelliert wurde. Dies ist auf eine Einschränkung des USDZ-Exports in Blender zurückzuführen (siehe Abschnitt 13).
 
 ---
 
@@ -213,7 +236,29 @@ arImg.src  = item.image;  // z.B. "assets/axe.svg"
 
 ## 11. GitHub Pages Deployment
 
-[→ wird nach Deployment ergänzt]
+Die Webapp wird über GitHub Pages öffentlich gehostet. GitHub Pages ermöglicht das kostenlose Hosting statischer Websites direkt aus einem GitHub-Repository.
+
+**Repository:** `https://github.com/KeanuTheKid/HCI--Webapp`
+
+**Öffentliche URL:** `https://keanuthekid.github.io/HCI--Webapp/`
+
+**Einstellungen:**
+- Branch: `main`
+- Ordner: `/ (root)`
+- Kein Build-Prozess nötig (reines HTML/CSS/JS)
+
+**Deployment-Ablauf:**
+1. Alle Dateien liegen im Root des `main`-Branches
+2. GitHub Actions startet automatisch den Workflow „pages build and deployment"
+3. Nach ca. 54 Sekunden ist die Seite live
+
+*→ Screenshot G: GitHub Pages Einstellungen mit Branch `main` und `/(root)`*
+*→ Screenshot I: GitHub Actions mit erfolgreichem Deployment-Workflow (grüner Haken, 54s)*
+*→ Screenshot H: GitHub Pages Einstellungsseite mit Live-URL*
+
+**Problem beim Deployment:** Nach dem ersten Konfigurieren von GitHub Pages startete der Deployment-Workflow nicht automatisch, obwohl die Einstellungen korrekt gespeichert waren. Die Seite blieb über 30 Minuten nicht erreichbar (HTTP 404).
+
+**Lösung:** Ein leerer Commit (`git commit --allow-empty`) wurde gepusht, um den GitHub Actions Workflow manuell zu triggern. Danach startete das Deployment sofort und war nach 54 Sekunden abgeschlossen.
 
 ---
 
@@ -225,18 +270,34 @@ arImg.src  = item.image;  // z.B. "assets/axe.svg"
 | Non-uniform scale Warnung | Scale wurde nicht auf Geometrie angewendet | `Ctrl+A → All Transforms` vor Export |
 | AR-Button funktioniert nicht auf iOS | `<a rel="ar">` ohne `<img>`-Kind-Element | AR Quick Look Pattern korrekt implementiert (siehe Abschnitt 10) |
 | Falsche Dateistruktur für GitHub Pages | Dateien in verschachteltem Unterordner | Alle Dateien in Repo-Root verschoben |
+| GitHub Pages Deployment startet nicht | Workflow triggert nach erster Konfiguration nicht automatisch | Leerer Commit gepusht (`git commit --allow-empty`) um Pipeline zu starten |
+| Kein Push-Zugriff auf Gruppen-Repo | GitHub-Account ohne Schreibrechte auf `HCI-Group07/webapphci` | Neues eigenes Repo `KeanuTheKid/HCI--Webapp` erstellt |
 
 ---
 
 ## 13. Reflexion / Limitations
 
-[→ wird am Ende ergänzt]
+**Materialien im USDZ-Export**
+Das grösste technische Problem war der Verlust der Materialien beim Export aus Blender. In Blender hatte die Feuerwehraxt zwei klar unterscheidbare Materialien (Metall für den Axtkopf, Holz für den Stiel). Nach dem Export als USDZ und der Anzeige in AR Quick Look erschien das Modell einfarbig gelb. Blender 5 unterstützt den USDZ-Export zwar nativ, überträgt aber komplexe Material-Setups nicht immer vollständig. Für eine produktionsreife Lösung wäre die Verwendung von Apple Reality Converter oder die manuelle Zuweisung von USD-kompatiblen Materialien notwendig.
+
+**Skalierung in AR**
+Das Modell erscheint in AR sehr gross im Verhältnis zur realen Umgebung. Dies liegt daran, dass die Einheiten in Blender (Meter) nicht direkt der erwarteten Grösse des Objekts in der realen Welt entsprechen. Eine korrekte Skalierung vor dem Export (z.B. reale Axt ca. 60–80 cm) wäre für eine bessere User Experience wichtig.
+
+**Plattformbeschränkung**
+Der Prototyp funktioniert ausschliesslich auf iOS in Safari. Andere Browser (Chrome auf iOS, Firefox) unterstützen AR Quick Look nicht. Android-Nutzer sehen den Button, der Link öffnet jedoch nur einen USDZ-Download statt AR.
+
+**Fehlende Texturen**
+Die SVG-Vorschaubilder in der Webapp sind stilisierte Icons, keine realistischen Renderings der 3D-Modelle. Für eine überzeugendere Präsentation wären gerenderte PNG-Vorschaubilder aus Blender sinnvoll.
 
 ---
 
 ## 14. Fazit
 
-[→ wird am Ende ergänzt]
+Der Web-AR-Prototyp „Helmet Through Time" erfüllt alle technischen Anforderungen der Aufgabenstellung: Er umfasst drei Seiten (Startseite, Sammlung, Detailansicht), vier 3D-Modelle im USDZ-Format und ist über GitHub Pages öffentlich erreichbar. AR Quick Look funktioniert auf dem iPhone 16 in Safari korrekt.
+
+Der vollständige Workflow von Blender über den Export bis zur Einbindung in die Website wurde durchlaufen und dokumentiert. Dabei traten reale Probleme auf (falsche Dateiendung beim Export, nicht startender Deployment-Workflow), die identifiziert und gelöst wurden.
+
+Die wichtigste Erkenntnis für zukünftige Projekte: Der USDZ-Export aus Blender überträgt Materialien nicht vollständig. Für materialgetreue AR-Darstellungen wäre entweder Apple Reality Converter oder ein direkter Einstieg in USD-native Workflows notwendig.
 
 ---
 
