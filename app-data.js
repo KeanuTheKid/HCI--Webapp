@@ -1,23 +1,23 @@
 const ITEMS = [
   {
     slug: "historic_helmet",
-    title: "Lederhelm (ca. 1900)",
+    title: "Einsatzhelm 1",
     color: "#d6d642",
     image: "assets/historic_helmet.svg",
     glb: "models/historic_helmet.glb",
     usdz: "models/historic_helmet.usdz",
     description:
-      "Dieser Feuerwehrhelm wurde um 1900 getragen und bestand meist aus gehärtetem Leder. Er bot nur begrenzten Schutz, war aber leicht und flexibel. Die markante Form half, Wasser und herabfallende Trümmer vom Gesicht abzuleiten."
+      "Ein Feuerwehrhelm im klassischen Design. Betrachte ihn in AR und erkunde Form, Aufbau und Details direkt in deiner Umgebung."
   },
   {
     slug: "red_helmet",
-    title: "Moderner Einsatzhelm",
+    title: "Einsatzhelm 2",
     color: "#ff3322",
     image: "assets/red_helmet.svg",
     glb: "models/red_helmet.glb",
     usdz: "models/red_helmet.usdz",
     description:
-      "Moderne Feuerwehrhelme bestehen aus hitzebeständigen Materialien wie Kunststoff oder Kevlar. Sie bieten Schutz vor Hitze, Rauch, Schlägen und herabfallenden Objekten. Zusätzliche Elemente wie Visier, Nackenschutz und reflektierende Streifen erhöhen die Sicherheit im Einsatz."
+      "Ein Feuerwehrhelm im modernen Design. Betrachte ihn in AR und erkunde Form, Aufbau und Details direkt in deiner Umgebung."
   },
   {
     slug: "fire_extinguisher",
